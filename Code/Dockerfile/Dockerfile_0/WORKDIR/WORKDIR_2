@@ -1,0 +1,9 @@
+FROM ubuntu:16.04
+
+WORKDIR /project
+
+RUN npm install 
+
+WORKDIR ../project2
+
+RUN touch file1.cpp

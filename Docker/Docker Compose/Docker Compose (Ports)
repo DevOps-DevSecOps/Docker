@@ -1,0 +1,31 @@
+# docker-compose.yml 1
+version: "3.7"
+services:
+  myapp:
+    image: my-app:latest
+    ports:
+      - 8080
+      - 8081
+
+# Commands
+docker-compose up -d
+docker port my-app_myapp_1
+8080/tcp -> 0.0.0.0:32785
+8081/tcp -> 0.0.0.0:32784
+
+# docker-compose.yml 2
+version: "3.7"
+services:
+  myapp:
+    image: my-app:latest
+    ports:
+      - 80:8080
+      - 81:8081
+      
+# Commands
+docker-compose up -d
+docker port my-app_myapp_1
+8080/tcp -> 0.0.0.0:80
+8081/tcp -> 0.0.0.0:81
+
+# Links:- https://www.baeldung.com/ops/docker-expose-more-than-one-port

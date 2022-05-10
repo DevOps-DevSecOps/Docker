@@ -1,0 +1,1 @@
+Docker stores those logs under '/var/lib/docker/containers/container-ID/container-ID-json.log' on the host machine.

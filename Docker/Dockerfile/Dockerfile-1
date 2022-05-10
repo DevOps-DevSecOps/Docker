@@ -1,0 +1,119 @@
+[FROM]
+• Base image that you want to start off with. 
+• ARG - in case you want to pass in a version to the FROM tag.
+• The FROM instruction initializes a new build stage and sets the Base Image for subsequent instructions. 
+• As such, a valid Dockerfile must start with a FROM instruction. 
+• The image can be any valid image – it is especially easy to start by pulling an image from the Public Repositories.
+• It can appear multiple times within a single Dockerfile in order to create multiple images. 
+• Simply make a note of the last image ID output by the commit before each new FROM command.
+• The tag or digest values are optional. If you omit either of them, the builder assumes a latest by default. 
+• The builder returns an error if it cannot match the tag value.
+FROM image
+FROM image:tag
+FROM image@digest
+
+[MAINTAINER]
+• The MAINTAINER instruction allows you to set the Author field of the generated images.
+MAINTAINER name
+
+[LABEL]
+• The LABEL instruction adds metadata to an image.
+• This allows you to add labels to your image.
+LABEL key=value
+
+[ARG]
+• These are arguments you might want to pass in during build-time only.
+• Such as version of the base image, or perhaps the path of the war file you might want to pass in. 
+
+[ENV]
+• Sets environment variables within the docker container. 
+• The cool thing about this is that they can be set during runtime from the command line.
+
+[USER]
+
+[RUN]
+• We use this to run commands during the build phase to add layers onto the image itself.
+RUN command                                     # shell form, the command is run in a shell, default is /bin/sh -c on Linux or cmd /S /C on Windows
+RUN ["executable", "param1", "param2"]          # exec form
+
+[WORKDIR]
+• Sets the working directory for the RUN, CMD, ENTRYPOINT, COPY and ADD instructions that are specified after it is used. 
+• You can run this instruction multiple times within the Dockerfile and the commands under it will then use the latest directory specified by WORKDIR.
+• The name of directory is exist, then it will switch inside the directory.
+• The name of directory doesn’t exist, then it will create and switch inside the directory.
+
+[ADD]
+• This copies files from the host machine to the container filesystem. 
+• This includes handling of tar and URL handling. 
+• However, COPY is preferred for moving files between the host and container file system. 
+• The only reason being that it might do some added steps such as decompress your tar automatically, etc. 
+• It can still definitely be used as long as you know what it will do.
+
+[COPY]
+
+[VOLUME]
+
+[CMD]
+• We use this to run a command at the end that we always want the image to run.
+• Allows you to override the parameters when you run the docker container via command line.
+• There can only be one CMD instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect.
+CMD ["executable","param1","param2"]            # exec form, this is the preferred form			
+CMD ["param1","param2"]                         # default parameters to ENTRYPOINT
+CMD command param1 param2                       # shell form
+
+[ENTRYPOINT]
+• Similar to CMD, but doesn't allow you to override the command and parameters via the command line.
+ENTRYPOINT ["executable", "param1", "param2"]
+ENTRYPOINT command param1 param2
+
+[EXPOSE]
+• Informs Docker that the container listens on the specified network port(s) at runtime.
+• EXPOSE does not make the ports of the container accessible to the host.
+• Essentially lets the docker container know to enable networking for this port as it will likely be used by the outside world.
+
+[STOPSIGNAL]
+• The STOPSIGNAL instruction sets the system call signal that will be sent to the container to exit.  
+• This signal can be a valid unsigned number that matches a position in the kernel’s syscall table, for instance 9, or a signal name in the format SIGNAME, for instance SIGKILL.
+• The parameter supplied to the STOPSIGNAL instruction is used when a docker container stop command is issued.
+STOPSIGNAL signal_name
+STOPSIGNAL signal_no
+
+[ONBUILD]
+• Docker ONBUILD command instruction is used to specify the commands that runs when the new docker image is used as a base image for another image (child image).
+• The ONBUILD instruction before other line instructions will be applied to current image.
+• This ONBUILD instructions will be applied to new image when we use the current image as a base image.
+ONBUILD Dockerfile_INSTRUCTION
+
+[SHELL]
+• The SHELL instruction allows the default shell used for the shell form of commands to be overridden.
+• The default shell on Linux is ["/bin/sh", "-c"], and on Windows is ["cmd", "/S", "/C"].
+• The SHELL instruction can appear multiple times.
+• Each SHELL instruction overrides all previous SHELL instructions, and affects all subsequent instructions.
+SHELL ["executable", "parameters"]
+SHELL ["executable", "param1", "param2"]
+
+[HEALTHCHECK]
+• A HEATHCHECK instruction determines the state of a Docker Container. 
+• It determines whether the Container is running in a normal state or not. 
+• It performs health checks at regular intervals. 
+• The initial state is starting and after a successful checkup, the state becomes healthy. 
+• If the test remains unsuccessful, it turns into an unhealthy state.
+• So the HEALTHCHECK line should be add right before the CMD instruction line.
+• The options that can appear before CMD are:
+--interval=DURATION (default: 30s)
+--timeout=DURATION (default: 30s)
+--start-period=DURATION (default: 0s)
+--retries=N (default: 3)
+• The health check will first run interval seconds after the container is started, and then again interval seconds after each previous check completes.
+• If a single run of the check takes longer than timeout seconds then the check is considered to have failed.
+• It takes retries consecutive failures of the health check for the container to be considered unhealthy.
+• start period provides initialization time for containers that need time to bootstrap. 
+  Probe failure during that period will not be counted towards the maximum number of retries. 
+  However, if a health check succeeds during the start period, the container is considered started and all consecutive failures will be counted towards the maximum number of retries.
+-> There can only be one HEALTHCHECK instruction in a Dockerfile. If you list more than one then only the last HEALTHCHECK will take effect.
+-> The command’s exit status indicates the health status of the container. The possible values are:
+0: success - the container is healthy and ready for use
+1: unhealthy - the container is not working correctly
+2: reserved - do not use this exit code
+HEALTHCHECK [options] CMD command               # check container health by running a command inside the container
+HEALTHCHECK NONE                                # disable any healthcheck inherited from the base image

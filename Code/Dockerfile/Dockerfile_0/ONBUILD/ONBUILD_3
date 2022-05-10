@@ -1,0 +1,3 @@
+FROM docker.io/centos
+ONBUILD ADD . /usr/src/app
+ONBUILD RUN yum install httpd

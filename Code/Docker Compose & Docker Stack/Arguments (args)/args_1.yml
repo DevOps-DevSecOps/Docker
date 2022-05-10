@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  somename:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      args:
+        some_variable_name: a_value

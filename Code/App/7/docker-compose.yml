@@ -1,0 +1,24 @@
+version: '3.2'
+services:
+  sshd:
+    build: .
+    ports:
+      - "23:22"
+      - "20000-20100"                     # means: Expose the container ports in the range 20000 to 20100 into random ports on the host machine
+      - "10000-10100:20000-20100"         # means: Expose the container ports in the range 20000 to 20100 into random ports on the host machine in the range of 10000 to 10100
+      - "20000-20010:20000-20010"
+    environment:
+      REDIS_ADDRESS: redis
+      DEBUG: 'sshd:*,ioredis:*'
+  web:
+    image: controller_web
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+        mode: host
+    environment:
+      REDIS_ADDRESS: redis
+      DEBUG: 'sshd:*,ioredis:*'
+  redis:
+    image: "redis"

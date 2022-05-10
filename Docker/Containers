@@ -1,0 +1,27 @@
+[Restart Policy]
+Docker provides restart policies to control whether your containers start automatically when they exit, or when Docker restarts.
+The value of the --restart flag can be any of the following
+
+● no - Do not automatically restart the container. (the default)
+# Syntax :->                --restart no (OR) --restart=no
+
+● on-failure - Restart the container if it exits due to an error, which manifests as a non-zero exit code.
+# Syntax :->                --restart on-failure (OR) --restart=on-failure (OR) --restart=on-failure:NO
+This will run the container with a restart policy of on-failure and a maximum restart count of NO.
+If the container exits with a non-zero exit status more than NO times in a row Docker will abort trying to restart the container.
+Providing a maximum restart limit is only valid for the on-failure policy.
+
+● always - Always restart the container if it stops.
+           If it is manually stopped, it is restarted only when Docker daemon restarts or the container itself is manually restarted.
+# Syntax :->                --restart always (OR) --restart=always
+
+● unless-stopped - when the container is stopped (manually or otherwise), it is not restarted even after Docker daemon restarts.
+# Syntax :->                --restart unless-stopped (OR) --restart=unless-stopped
+
+[Restart Policy - Details]
+A restart policy only takes effect after a container starts successfully. 
+In this case, starting successfully means that the container is up for at least 10 seconds and Docker has started monitoring it.
+This prevents a container which does not start at all from going into a restart loop.
+If manually stop a container, its restart policy is ignored until the Docker daemon restarts or the container is manually restarted.
+This is another attempt to prevent a restart loop.
+Restart policies only apply to containers. Restart policies for swarm services are configured differently.

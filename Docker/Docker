@@ -1,0 +1,169 @@
+[Base Image]
+● A base image has no parent image specified in its Dockerfile. It is created using a Dockerfile with the FROM scratch directive.
+
+[Build]
+● A build is the process of building Docker images using a Dockerfile. 
+● The build uses a Dockerfile and a “context”. The context is the set of files in the directory in which the image is built.
+
+[Cgroups]
+● A cgroups is a Linux kernel feature that limits, accounts for, and isolates the resource usage (CPU, memory, disk I/O, network, etc.) of a collection of processes.
+● Docker relies on cgroups to control and isolate resource limits.
+● Also known as : control groups
+
+[Cluster]
+● A cluster is a group of machines that work together to run workloads and provide high availability.
+
+[Compose]
+● Compose is a tool for defining and running complex applications with Docker.
+● With Compose, you define a multi-container application in a single file, then spin your application up in a single command which does everything that needs to be done to get it running.
+
+[Copy-on-Write]
+● Multiple containers can share access to the same image, and make container-specific changes on a writable layer which is deleted when the container is removed.
+● This speeds up container start times and performance.
+● Images are essentially layers of filesystems typically predicated on a base image under a writable layer, and built up with layers of differences from the base image.
+
+[Container]
+● A container is a runtime instance of a docker image.
+● The concept is borrowed from Shipping Containers, which define a standard to ship goods globally. Docker defines a standard to ship software.
+
+[Docker]
+● The Docker project as a whole, which is a platform for developers and sysadmins to develop, ship, and run applications.
+● The docker daemon process running on the host which manages images and containers (also called Docker Engine).
+
+[Docker Hub]
+● The Docker Hub is a centralized resource for working with Docker and its components.
+● It provides the following services:
+-> Docker image hosting
+-> User authentication
+-> Automated image builds and work-flow tools such as build triggers and web hooks
+-> Integration with GitHub and Bitbucket
+
+[Dockerfile]
+● A Dockerfile is a text document that contains all the commands you would normally execute manually in order to build a Docker image.
+● Docker can build images automatically by reading the instructions from a Dockerfile.
+
+[Filesystem]
+● A file system is the method an operating system uses to name files and assign them locations for efficient storage and retrieval.
+-> Linux : ext4, aufs, btrfs, zfs
+-> Windows : NTFS
+-> macOS : HFS+
+
+[Image]
+● Docker images are the basis of containers.
+● An Image is an ordered collection of root filesystem changes and the corresponding execution parameters for use within a container runtime.
+● An image does not have state and it never changes.
+
+[Layer]
+● In an image, a layer is modification to the image, represented by an instruction in the Dockerfile.
+● Layers are applied in sequence to the base image to create the final image.
+● When an image is updated or rebuilt, only layers that change need to be updated, and unchanged layers are cached locally.
+● This is part of why Docker images are so fast and lightweight.
+● The sizes of each layer add up to equal the size of the final image.
+
+[Libcontainer]
+● libcontainer provides a implementation for creating containers with namespaces, cgroups, capabilities, and filesystem access controls.
+● It allows you to manage the lifecycle of the container performing additional operations after the container is created.
+
+[Libnetwork]
+● libnetwork provides a implementation for creating and managing container network namespaces and other network resources.
+● It manages the networking lifecycle of the container performing additional operations after the container is created.
+
+[Link]
+● A links provide a legacy interface to connect Docker containers running on the same host to each other without exposing the hosts’ network ports. Use the Docker networks feature instead.
+
+[Machine]
+● Machine is a Docker tool which makes it really easy to create Docker hosts on your computer, on cloud providers and inside your own data center.
+● It creates servers, installs Docker on them, then configures the Docker client to talk to them.
+● Also known as : docker-machine
+
+[Namespace]
+● A Linux namespace is a Linux kernel feature that isolates and virtualizes system resources.
+● Processes which are restricted to a namespace can only interact with resources or processes that are part of the same namespace.
+● Namespaces are an important part of Docker’s isolation model.
+● Namespaces exist for each type of resource, including net (networking), mnt (storage), pid (processes), uts (hostname control), and user (UID mapping).
+
+[Node]
+● A node is a physical or virtual machine running an instance of the Docker Engine in swarm mode.
+● Manager nodes perform swarm management and orchestration duties. By default manager nodes are also worker nodes.
+● Worker nodes execute tasks.
+
+[Overlay Network Driver]
+● Overlay network driver provides out of the box multi-host network connectivity for docker containers in a cluster.
+
+[Overlay Storage Driver]
+● OverlayFS is a filesystem service for Linux which implements a union mount for other file systems.
+● It is supported by the Docker daemon as a storage driver.
+
+[Parent Image]
+● An image’s parent image is the image designated in the FROM directive in the image’s Dockerfile.
+● All subsequent commands are based on this parent image.
+● A Dockerfile with the FROM scratch directive uses no parent image, and creates a base image.
+
+[Persistent Storage]
+● Persistent storage or volume storage provides a way for a user to add a persistent layer to the running container’s file system.
+● This persistent layer could live on the container host or an external device.
+● The lifecycle of this persistent layer is not connected to the lifecycle of the container, allowing a user to retain state.
+
+[Registry]
+● A Registry is a hosted service containing repositories of images which responds to the Registry API.
+● The default registry can be accessed using a browser at Docker Hub or using the docker search command.
+
+[Repository]
+● A repository is a set of Docker images.
+● A repository can be shared by pushing it to a registry server.
+● The different images in the repository can be labeled using tags.
+
+[SSH]
+● SSH (secure shell) is a secure protocol for accessing remote machines and applications.
+● It provides authentication and encrypts data communication over insecure networks such as the Internet.
+● SSH uses public/private key pairs to authenticate logins.
+
+[Service]
+● A service is the definition of how you want to run your application containers in a swarm.
+● At the most basic level a service defines which container image to run in the swarm and which commands to run in the container.
+● For orchestration purposes, the service defines the “desired state”, meaning how many containers to run as tasks and constraints for deploying the containers.
+
+[Service Discovery]
+● Swarm mode container discovery is a DNS component internal to the swarm that automatically assigns each service on an overlay network in the swarm a VIP and DNS entry.
+● Containers on the network share DNS mappings for the service via gossip so any container on the network can access the service via its service name.
+● You don’t need to expose service-specific ports to make the service available to other services on the same overlay network. 
+● The swarm’s internal load balancer automatically distributes requests to the service VIP among the active tasks.
+
+[Swarm]
+● A swarm is a cluster of one or more Docker Engines running in swarm mode.
+
+[Docker Swarm]
+● Docker Swarm is the name of a standalone native clustering tool for Docker.
+● Docker Swarm pools together several Docker hosts and exposes them as a single virtual Docker host.
+
+[Swarm Mode]
+● Swarm mode refers to cluster management and orchestration features embedded in Docker Engine.
+● When you initialize a new swarm (cluster) or join nodes to a swarm, the Docker Engine runs in swarm mode.
+
+[Tag]
+● A tag is a label applied to a Docker image in a repository.
+● Tags are how various images in a repository are distinguished from each other.
+
+[Task]
+● A task is the atomic unit of scheduling within a swarm.
+● A task carries a Docker container and the commands to run inside the container.
+● Manager nodes assign tasks to worker nodes according to the number of replicas set in the service scale.
+
+[UnionFS]
+● It is a filesystem service which is used for creating docker image layers.
+● Union file systems implement a union mount and operate by creating layers.
+● Docker uses union file systems in conjunction with copy-on-write techniques to provide the building blocks for containers, making them very lightweight and fast.
+
+[Virtual Machine]
+● A virtual machine is a program that emulates a complete computer and imitates dedicated hardware.
+● It shares physical hardware resources with other users but isolates the operating system.
+● Compared to containers, a virtual machine is heavier to run, provides more isolation, gets its own set of resources and does minimal sharing.
+
+[Volume]
+● A volume is a specially-designated directory within one or more containers that bypasses the Union File System. 
+● Volumes are designed to persist data, independent of the container’s life cycle.
+● Docker therefore never automatically deletes volumes when you remove a container, nor will it “garbage collect” volumes that are no longer referenced by a container.
+● There are three types of volumes: host, anonymous, named
+-> A host volume lives on the Docker host’s filesystem and can be accessed from within the container.
+-> A named volume is a volume which Docker manages where on disk the volume is created, but it is given a name.
+-> An anonymous volume is similar to a named volume, however, it can be difficult, to refer to the same volume over time when it is an anonymous volumes. Docker handle where the files are stored.

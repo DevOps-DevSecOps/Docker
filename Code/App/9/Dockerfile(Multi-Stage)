@@ -1,0 +1,8 @@
+FROM golang AS base
+COPY hello.go .
+RUN go build hello.go
+
+FROM alpine:3.7
+RUN mkdir /app
+COPY --from=base /go/hello /app
+CMD /app/hello

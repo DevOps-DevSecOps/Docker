@@ -1,0 +1,5 @@
+FROM docker.io/centos
+MAINTAINER Devops Engineer
+ENV JAVA_HOME=/opt/java
+ENV app_version=2.0
+ENV JAVA_HOME=${JAVA_HOME}

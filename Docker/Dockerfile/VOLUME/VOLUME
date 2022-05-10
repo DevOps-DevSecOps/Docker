@@ -1,0 +1,23 @@
+# Dockerfile 1
+FROM ubuntu:latest
+RUN mkdir /data
+WORKDIR /data
+RUN echo "Hello from Volume" > test
+VOLUME /data
+
+# Dockerfile 2
+FROM ubuntu:16.04
+RUN mkdir /myvol
+RUN echo 'Hello World' >> /myvol/hello
+VOLUME /myvol
+
+# COMMANDS
+docker build -f volume -t collabnix/volume:1 .
+
+docker run collabnix/volume:1
+
+docker run -d -v /data collabnix/volume:1
+
+docker volume ls
+
+# Links:- https://dockerlabs.collabnix.com/beginners/volume/create-a-volume-mount-from-dockerfile.html, https://www.lewuathe.com/changing-the-volume-within-dockerfile.html 

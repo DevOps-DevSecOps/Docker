@@ -1,0 +1,9 @@
+FROM golang:latest
+WORKDIR /go
+COPY app.go .
+RUN go build -o my-binary
+ 
+FROM alpine:latest
+WORKDIR /app
+COPY --from=build /go/my-binary .
+CMD ["./my-binary"]

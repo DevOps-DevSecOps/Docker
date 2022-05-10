@@ -1,0 +1,5 @@
+# Build the Docker Image
+docker build --build-arg JAR_FILE="build/libs/*.jar" -t splitdemo/spring-boot-docker .
+
+# Run the Docker Image
+docker run -p 8080:8080 splitdemo/spring-boot-docker

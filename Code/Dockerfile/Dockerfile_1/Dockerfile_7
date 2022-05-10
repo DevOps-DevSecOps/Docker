@@ -1,0 +1,13 @@
+# Select base image
+FROM node:10
+# Set work directory
+WORKDIR /nebula-web-console
+# Copy the current project to the /nebula-web-console directory of the image
+ADD . /nebula-web-console
+# Download front-end dependency in the image
+RUN npm install
+# Run the building
+RUN npm run build
+EXPOSE 7001
+# Deployment commands executed when the image starts
+CMD ["npm", "run", "docker-start"]

@@ -1,0 +1,43 @@
+# Dockerfile 1
+FROM openjdk:8-jdk-alpine
+EXPOSE 8080
+EXPOSE 8081
+ARG JAR_FILE=target/my-app-0.1.jar
+ADD ${JAR_FILE} my-app.jar
+ENTRYPOINT ["java","-jar","/my-app.jar"]
+
+# Dockerfile 2
+FROM openjdk:8-jdk-alpine
+EXPOSE 8080/tcp
+EXPOSE 8081/udp
+ARG JAR_FILE=target/my-app-0.1.jar
+ADD ${JAR_FILE} my-app.jar
+ENTRYPOINT ["java","-jar","/my-app.jar"]
+
+# Dockerfile 3
+FROM openjdk:8-jdk-alpine
+EXPOSE 8000-8009
+ARG JAR_FILE=target/my-app-0.1.jar
+ADD ${JAR_FILE} my-app.jar
+ENTRYPOINT ["java","-jar","/my-app.jar"]
+
+# build the image using this Dockerfile
+docker build -t my-app:latest .
+
+# run the container
+docker run --name myapp -d --expose=8081 my-app:latest
+docker run --name myapp -d --expose=8000-8009 my-app:latest
+● It opens two random ports in the host computer and maps them with ports 8080 and 8081 of the Docker container. It behaves the same way if we expose a range of ports.
+docker run --name myapp -d -P myApp:latest
+docker port myapp
+8080/tcp -> 0.0.0.0:32773
+8081/tcp -> 0.0.0.0:32772
+● To choose specific ports in the host computer by using the -p parameter.
+docker run --name myapp -d -p 80:8080 my-app:latest
+● To publish multiple port mappings, we use the -p parameter multiple times.
+docker run --name myapp -d -p 80:8080 -p 81:8081 my-app:latest
+
+--publish , -p			Publish a container's port(s) to the host
+--publish-all , -P		Publish all exposed ports to random ports
+
+# Links:- https://www.baeldung.com/ops/docker-expose-more-than-one-port

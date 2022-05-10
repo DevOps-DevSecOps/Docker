@@ -1,0 +1,20 @@
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} app.jar
+
+RUN mkdir destination-dir-for-add
+ADD sample.tar.gz /destination-dir-for-add
+
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "openssh-server"]
+RUN echo 'root:lollol0' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN ["/etc/init.d/ssh", "start"]
+
+EXPOSE 22
+
+WORKDIR "/app"
+
+CMD ["/usr/sbin/sshd", "-D"]
+
+ENTRYPOINT ["java","-jar","/app.jar"]

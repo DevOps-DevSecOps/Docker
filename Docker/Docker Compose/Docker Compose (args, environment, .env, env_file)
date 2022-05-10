@@ -1,0 +1,66 @@
+[args]
+It is only available during the build of a Docker image (RUN etc), not after the image is created and containers are started from it (ENTRYPOINT, CMD).
+
+# Example
+version: '3'
+services:
+  somename:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      args:
+        some_variable_name: a_value
+        
+[environment]
+
+# Example - Provide values one by one
+version: '3'
+services:
+  plex:
+    image: linuxserver/plex
+      environment:
+        - env_var_name=another_value
+
+• From the commandline, use the -e flag
+docker run -e "env_var_name=another_value" alpine env
+
+# Example - Pass environment variable values from your host
+version: '3'
+services:
+  plex:
+    image: linuxserver/plex
+      environment:
+        - env_var_name
+        
+• From the commandline, use the -e flag
+docker run -e env_var_name alpine env
+
+[.env]
+• If you have a file named .env in your project, it’s only used to put values into the docker-compose.yml file which is in the same folder.
+• Those are used with Docker Compose and Docker Stack. It has nothing to do with ENV, ARG, or anything Docker-specific explained above.
+
+# Example 
+version: '3'
+services:
+  plex:
+    image: linuxserver/plex
+      environment:
+        - env_var_name=${VARIABLE_NAME}
+
+• The values in the .env file are written in below
+VARIABLE_NAME=some value
+OTHER_VARIABLE_NAME=some other value, like 5
+
+[env_file]
+
+# Example - Take values from a file (env_file)
+version: '3'
+services:
+  plex:
+    image: linuxserver/plex
+    env_file: env_file_name
+    
+• The file above is called env_file_name (name arbitrary) and it’s located in the current directory.
+docker run --env-file=env_file_name alpine env
+
+# Link:- https://vsupalov.com/docker-arg-env-variable-guide/#the-dot-env-file-env

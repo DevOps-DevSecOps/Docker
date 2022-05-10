@@ -1,0 +1,11 @@
+# Build the Docker Containers
+docker-compose build
+
+# Start the app and the database using Docker Compose
+docker-compose up
+
+# Delete the containers
+docker-compose down
+
+# Delete the app containers AND the database volume
+docker-compose down --volumes

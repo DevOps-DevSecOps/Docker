@@ -1,0 +1,17 @@
+# Set up the image generated in the first step and name it builder
+FROM node:10-alpine as builder
+WORKDIR /nebula-web-console
+# Copy the current project to the image
+ADD . /nebula-web-console
+# Start building
+RUN npm install
+RUN npm run build
+....
+
+# Start the second step build
+FROM node:10-alpine
+WORKDIR /nebula-web-console
+# Copy the product of the first step image to the current image. Only one image layer is used here, which saves the number of image layers in the previous building step.
+
+COPY --from=builder . /nebula-web-console
+CMD ["npm", "run", "docker-start"]

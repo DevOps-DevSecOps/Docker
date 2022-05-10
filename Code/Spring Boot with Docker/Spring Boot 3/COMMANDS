@@ -1,0 +1,23 @@
+docker build --tag=message-server:latest .
+
+docker run -p 8887:8888 message-server:latest
+
+docker run -it -p 9099:8888 docker-message-server:1.0.0
+
+# we'll check our build-file for syntax-errors
+docker-compose config
+
+# build our images
+docker-compose up --build
+
+# stop the containers, remove them from Docker and remove the connected networks
+docker-compose down
+
+# Scaling Services
+docker-compose --file docker-compose-scale.yml up -d --build --scale message-server=1 product-server=1
+
+docker-compose --file docker-compose-scale.yml up -d --build --scale message-server=3 product-server=2
+
+# In Docker Compose for the ports, we can tell Docker to map a range of ports on the host to one specific port inside Docker
+ports:
+    - 18800-18888:8888

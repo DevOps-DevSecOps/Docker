@@ -1,0 +1,7 @@
+docker build -t kbillen92/sample-api:latest .
+
+docker run -d --mount source=sampleVolume,target=/var/lib/SampleApp -p 8080:8080 kbillen92/sample-api:latest
+
+docker login -u <username> -p <password>
+
+docker push kbillen92/sample-api:latest

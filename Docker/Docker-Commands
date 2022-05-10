@@ -1,0 +1,221 @@
+[Version]
+docker version
+
+[Information]
+docker info
+
+[Run]
+docker run IMAGE_ID
+docker run IMAGE_NAME
+docker run IMAGE_NAME:TAG
+docker run DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker run DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
+docker run -it IMAGE_ID
+docker run -it IMAGE_NAME
+docker run -it IMAGE_NAME:TAG
+docker run -it --rm --name CONTAINER_NAME IMAGE_NAME sh                             # exit from a container will be deleted
+docker run -it --rm DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker run -itd IMAGE_ID
+docker run -itd IMAGE_NAME
+docker run -itd IMAGE_NAME:TAG
+docker run -itd --name=CONTAINER_NAME IMAGE_NAME
+docker run -itd --network=NETWORK_TYPES_NAME --name=CONTAINER_NAME IMAGE_NAME
+docker run -d -it IMAGE_NAME
+docker run -d -it --name CONTAINER_NAME IMAGE_NAME
+docker run -d -it -v HOST_PATH:/CONTAINER_PATH IMAGE_NAME
+docker run -d -it -v $(pwd):/CONTAINER_PATH IMAGE_NAME
+docker run --name CONTAINER_NAME IMAGE_NAME
+docker run --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT IMAGE_NAME
+
+[Create]                                                                        # create docker container using Image from Docker Hub
+docker create -it IMAGE_NAME
+
+[Exec]
+docker exec -it CONTAINER_ID LINUX_COMMANDS
+
+[Attach]
+docker attach CONTAINER_ID
+docker attach CONTAINER_NAME
+
+[Copy]
+docker cp FILE_NAME CONTAINER_ID:/FILE_NAME
+docker cp FILE_NAME CONTAINER_ID:/FOLDER_NAME
+docker cp FILE_NAME CONTAINER_NAME:/FOLDER_NAME
+docker cp /FOLDER_NAME/FILE_NAME CONTAINER_ID:/
+docker cp /FOLDER_NAME/FILE_NAME CONTAINER_NAME:/
+docker cp FOLDER_NAME/. CONTAINER_ID:/
+docker cp FOLDER_NAME/. CONTAINER_NAME:/
+docker cp . CONTAINER_ID:/FOLDER_NAME/.
+docker cp . CONTAINER_NAME:/FOLDER_NAME/.
+docker cp CONTAINER_ID:/FILE_NAME FILE_NAME
+docker cp CONTAINER_ID:/FOLDER_NAME/FILE_NAME .
+docker cp CONTAINER_NAME:/FOLDER_NAME/FILE_NAME .
+docker cp CONTAINER_ID:/FOLDER_NAME/. /FOLDER_NAME
+docker cp CONTAINER_NAME:/FOLDER_NAME/. /FOLDER_NAME
+docker cp CONTAINER_ID:/FILE_NAME FOLDER_NAME/.
+docker cp CONTAINER_NAME:/FILE_NAME FOLDER_NAME/.
+
+[Pull]
+docker pull REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
+
+[Commit]
+docker commit CONTAINER_ID IMAGE_NAME:TAG
+docker commit CONTAINER_NAME IMAGE_NAME:TAG
+
+[Tag]
+docker tag IMAGE_ID REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME
+docker tag IMAGE_ID REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
+
+[Inspect]
+docker inspect IMAGE_ID
+docker inspect IMAGE_NAME
+docker inspect IMAGE_NAME:TAG
+docker inspect CONTAINER_ID
+docker inspect CONTAINER_NAME
+
+[List the Containers]
+docker ps
+docker ps -a
+
+[Remove Images]
+docker rmi IMAGE_ID
+docker rmi -f IMAGE_ID
+docker rmi IMAGE_NAME
+docker rmi -f IMAGE_NAME
+docker rmi IMAGE_NAME:TAG
+docker rmi -f IMAGE_NAME:TAG
+docker rmi DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker rmi -f DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker rmi DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
+docker rmi -f DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
+docker rmi REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME
+docker rmi -f REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME
+docker rmi REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
+docker rmi -f REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
+
+[Remove Containers]
+docker rm CONTAINER_ID
+docker rm -f CONTAINER_ID
+docker rm CONTAINER_NAME
+docker rm -f CONTAINER_NAME
+docker rm --force CONTAINER_NAME
+docker rm $(docker ps -aq)
+docker rm -f -v $(docker ps -q)
+
+[Image]
+docker image ls 
+docker image inspect IMAGE_ID
+docker image inspect IMAGE_NAME
+docker image inspect IMAGE_NAME:TAG
+docker image rm IMAGE_ID
+docker image rm -f IMAGE_ID
+docker image rm IMAGE_NAME
+docker image rm -f IMAGE_NAME
+docker image rm IMAGE_NAME:TAG
+docker image rm -f IMAGE_NAME:TAG
+docker image rm DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker image rm -f DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker image rm DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
+docker image rm -f DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
+docker image rm REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME
+docker image rm -f REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME
+docker image rm REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
+docker image rm -f REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
+docker image prune -f
+docker image prune --force
+
+[Container]
+docker container ls                                                 # list docker containers
+docker container ls -a
+docker container inspect CONTAINER_ID
+docker container inspect CONTAINER_NAME
+docker container rm CONTAINER_ID
+docker container rm -f CONTAINER_ID
+docker container rm CONTAINER_NAME
+docker container rm -f CONTAINER_NAME
+docker container prune                                              # delete all un-used containers
+docker container prune -f
+docker container prune --force
+
+[Logs]
+docker logs -f CONTAINER_NAME
+
+[Diff]
+docker diff CONTAINER_ID
+
+[History]
+docker history IMAGE_ID
+
+[Start]
+docker start CONTAINER_ID
+
+[Stop]
+docker stop CONTAINER_ID
+
+[Stats]                                                  # containers resource usage
+docker stats                                             # all running containers
+docker stats CONTAINER_ID
+docker stats CONTAINER_NAME
+docker stats CONTAINER_ID CONTAINER_NAME
+
+[Restart]
+docker restart CONTAINER_ID
+
+[Kill]
+docker kill CONTAINER_ID
+
+[Events]
+docker events
+
+[Volumes]
+docker volume create VOLUME_NAME
+docker inspect VOLUME_NAME
+docker volume inspect VOLUME_NAME
+docker volume rm VOLUME_NAME
+
+[Network]
+docker network create NETWORK_NAME                      # create a docker network
+docker inspect NETWORK_ID                               # detailed information about network
+docker inspect NETWORK_NAME
+docker network inspect NETWORK_ID
+docker network inspect NETWORK_NAME                     
+docker network rm NETWORK_NAME                          # delete a docker network
+docker network ls                                       # list all docker networks 
+docker network prune                                    # delete all un-used networks
+docker network connect NETWORK_NAME CONTAINER_ID        # connect to a docker network
+docker network disconnect NETWORK_NAME CONTAINER_ID     # disconnect from a docker network
+
+[System]
+docker system prune
+docker system prune --volumes                           # by default, volumes are not removed to prevent important data from being deleted if there is currently no container using the volume
+docker system prune -a
+docker system prune --all
+docker system prune -f                                  # do not prompt for confirmation
+docker system prune --force
+
+[Dockerfile_Build]
+docker build -t NAME:TAG .
+docker build -t NAME -f Dockerfile_NAME .
+docker build -t NAME:TAG -f Dockerfile_NAME .
+docker build -t HUB_USERID/REPOSITORY_NAME:TAG -f Dockerfile_NAME .
+docker build -t REGISTRY_HOSTNAME_REGISTRY_IP_ADDRESS:REGISTRY_PORT/IMAGE_NAME .
+docker build -t REGISTRY_HOSTNAME_REGISTRY_IP_ADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG .
+
+[Swarm]
+docker inspect NODE_ID
+docker inspect NODE_HOSTNAME
+docker node inspect NODE_ID
+docker node inspect NODE_HOSTNAME
+
+docker inspect SERVICE_ID
+docker inspect SERVICE_NAME
+docker service inspect SERVICE_ID
+docker service inspect SERVICE_NAME
+
+docker node ps
+docker node ps NODE_ID
+docker node ps NODE_HOSTNAME
+docker node ps -f id=SERVICE_ID NODE_ID
+docker node ps -f id=SERVICE_ID NODE_HOSTNAME
+docker node ps -f name=SERVICE_NAME NODE_ID
+docker node ps -f name=SERVICE_NAME NODE_HOSTNAME

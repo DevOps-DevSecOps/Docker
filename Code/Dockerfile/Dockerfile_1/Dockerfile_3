@@ -1,0 +1,7 @@
+FROM ubuntu
+RUN echo I am using the default      #(/bin/sh)
+RUN ["/bin/bash", "-c", "echo I am using bash"]
+SHELL ["/bin/bash", "-c"]
+RUN echo I am using bash, which is now the default
+RUN ["/bin/sh", "-c", "echo I am using /bin/sh"]
+RUN ["echo", "I don't use a shell at all"]

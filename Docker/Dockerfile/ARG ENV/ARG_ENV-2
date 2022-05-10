@@ -1,0 +1,53 @@
+# CMD
+FROM docker.io/centos:latest
+MAINTAINER Devops Engineer
+WORKDIR /data
+RUN echo 'ping google.com' > runapp.sh
+CMD sh runapp.sh
+
+# COMMANDS
+docker build .
+
+docker run -d -it --name cmdtest1 learnitguide.net/cmdtest
+
+docker logs cmdtest1
+PING google.com (172.217.24.206) 56(84) bytes of data.
+64 bytes from 2a00:1450:400f:809::200e: icmp_seq=1 ttl=54 time=29.5 ms
+64 bytes from 2a00:1450:400f:809::200e: icmp_seq=2 ttl=54 time=29.2 ms
+
+docker run -d -it --name cmdtest2 learnitguide.net/cmdtest date
+
+docker logs cmdtest2
+Wed Jun 27 17:23:51 UTC 2018
+
+# ENTRYPOINT
+FROM docker.io/centos:latest
+MAINTAINER Devops Engineer
+WORKDIR /data
+RUN echo 'ping google.com' > runapp.sh
+ENTRYPOINT sh runapp.sh
+
+# COMMANDS
+docker build .
+
+docker run -d -it --name entrypointtest1 learnitguide.net/entrypointtest
+
+docker logs entrypointtest1
+PING google.com (172.217.24.206) 56(84) bytes of data.
+64 bytes from 2a00:1450:400f:809::200e: icmp_seq=1 ttl=54 time=28.9 ms
+64 bytes from 2a00:1450:400f:809::200e: icmp_seq=2 ttl=54 time=29.0 ms
+
+docker run -d -it --name entrypointtest2 learnitguide.net/entrypointtest date
+
+docker logs entrypointtest2
+PING google.com (216.58.220.206) 56(84) bytes of data.
+64 bytes from 2a00:1450:400f:809::200e: icmp_seq=1 ttl=54 time=29.5 ms
+64 bytes from 2a00:1450:400f:809::200e: icmp_seq=2 ttl=54 time=29.3 ms
+
+● Both containers cmdtest1 & entrypointtest1 - runs the application script without any issues.
+● when we used extra arguments at the end of the "Docker run" command. This is where the actual problem occurs, our script is not running in our "cmdtest2" container but it works on "entrypointtest2" container.
+
+-> When a user run a container with any arguments (commands) at the end of "docker run" command, the specified commands override the default arguement in CMD instruction, so the container will run the arguement given at the end of the docker run command.
+-> But if the same argument is given along with ENTRYPOINT instruction in dockerfile, even when a user gives any argument at the end of the docker run command, that will not override ENTRYPOINT instruction. So instruction will run as it is.
+
+# Links:- https://www.learnitguide.net/2018/06/dockerfile-cmd-entrypoint-differences.html

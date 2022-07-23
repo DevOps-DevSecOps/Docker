@@ -12,7 +12,9 @@ docker run DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -it IMAGE_ID
 docker run -it IMAGE_NAME
+docker run -it IMAGE_NAME sh
 docker run -it IMAGE_NAME:TAG
+docker run -it DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -it --rm --name CONTAINER_NAME IMAGE_NAME sh                             # exit from a container will be deleted
 docker run -it --rm DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -itd IMAGE_ID

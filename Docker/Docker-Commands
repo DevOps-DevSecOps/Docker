@@ -10,6 +10,8 @@ docker run IMAGE_NAME
 docker run IMAGE_NAME:TAG
 docker run DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
+docker run --name CONTAINER_NAME IMAGE_NAME
+docker run --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT IMAGE_NAME
 docker run -t -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -t -e "VARIABLE=VALUE" -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -i -t IMAGE_NAME /bin/bash
@@ -29,8 +31,7 @@ docker run -d -it IMAGE_NAME
 docker run -d -it --name CONTAINER_NAME IMAGE_NAME
 docker run -d -it -v HOST_PATH:/CONTAINER_PATH IMAGE_NAME
 docker run -d -it -v $(pwd):/CONTAINER_PATH IMAGE_NAME
-docker run --name CONTAINER_NAME IMAGE_NAME
-docker run --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT IMAGE_NAME
+docker run -d --name=CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 
 [Create]                                                                        # create docker container using Image from Docker Hub
 docker create -it IMAGE_NAME

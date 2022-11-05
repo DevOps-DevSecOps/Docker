@@ -6,6 +6,8 @@ $ docker kill --signal="SIGTERM" signal-fg-app
 
 $ docker stop signal-fg-app
 
+$ docker run -it --rm -p 3000:3000 --name="signal-bg-app" signal-bg-app
+
 $ docker kill --signal="SIGUSR1" signal-bg-app
 
 $ docker kill --signal="SIGTERM" signal-bg-app

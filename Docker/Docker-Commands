@@ -81,7 +81,9 @@ docker inspect IMAGE_ID
 docker inspect IMAGE_NAME
 docker inspect IMAGE_NAME:TAG
 docker inspect CONTAINER_ID
+docker inspect CONTAINER_ID | grep "IPAddress"
 docker inspect CONTAINER_NAME
+docker inspect CONTAINER_NAME | grep "IPAddress"
 
 [List the Containers]
 docker ps

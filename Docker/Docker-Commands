@@ -207,6 +207,7 @@ docker system prune -f                                  # do not prompt for conf
 docker system prune --force
 
 [Dockerfile_Build]
+docker build .
 docker build -t NAME .
 docker build -t NAME:TAG .
 docker build -t NAME -f Dockerfile_NAME .

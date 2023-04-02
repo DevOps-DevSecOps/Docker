@@ -67,6 +67,7 @@ docker cp CONTAINER_NAME:/FILE_NAME FOLDER_NAME/.
 docker pull REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
 
 [Push]
+docker push DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker push DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 
 [Commit]
@@ -183,6 +184,9 @@ docker kill CONTAINER_ID
 
 [Events]
 docker events
+
+[Login]
+docker login -u DOCKER_HUB_USER_ID
 
 [Volumes]
 docker volume create VOLUME_NAME

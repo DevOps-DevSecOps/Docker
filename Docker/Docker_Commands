@@ -3,3 +3,7 @@ docker run --name webserver -p 8080:80 nginx
 docker run -itd --network=none --name=CONTAINER_NAME IMAGE_NAME
 docker run -d -it -v $(pwd):/var/www nginx
 docker run -d -it -v $(pwd):/FOLDER_NAME/FOLDER_NAME IMAGE_NAME
+
+[Exec]
+docker exec CONTAINER_NAME ls /FOLDER_NAME/
+docker exec CONTAINER_NAME cat /FOLDER_NAME/FILE_NAME

@@ -47,6 +47,8 @@ docker create -it IMAGE_NAME
 [Exec]
 docker exec CONTAINER_NAME LINUX_COMMANDS
 docker exec -it CONTAINER_ID LINUX_COMMANDS
+docker exec -it CONTAINER_NAME bash
+docker exec -it CONTAINER_NAME /bin/sh
 
 [Attach]
 docker attach CONTAINER_ID
@@ -240,8 +242,10 @@ docker build --build-arg VARIABLE=VALUE -t DOCKER_HUB_USER_ID/REPOSITORY_NAME:TA
 docker-compose build
 docker-compose up
 docker-compose up -d
+docker-compose up -d SERVICE_NAME
 docker-compose -f FILE_NAME.yaml up
 docker-compose -f FILE_NAME.yaml up -d
+docker-compose -f FILE_NAME.yml up -d SERVICE_NAME
 docker-compose ps
 docker-compose exec CONTAINER_ID LINUX_COMMANDS
 docker-compose scale SERVICE_NAME=NO

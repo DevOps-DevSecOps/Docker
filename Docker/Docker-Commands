@@ -21,6 +21,7 @@ docker run -it IMAGE_NAME
 docker run -it IMAGE_NAME sh
 docker run -it IMAGE_NAME:TAG
 docker run -it DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker run -it --rm --name CONTAINER_NAME IMAGE_NAME:TAG bash
 docker run -it --rm DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -it --rm --name CONTAINER_NAME IMAGE_NAME sh                             # exit from a container will be deleted
 docker run -it --rm -p HOST_PORT:CONTAINER_PORT --name="CONTAINER_NAME" IMAGE_NAME
@@ -44,6 +45,7 @@ docker run -d --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT -v HOST_PATH_FOL
 docker create -it IMAGE_NAME
 
 [Exec]
+docker exec CONTAINER_NAME LINUX_COMMANDS
 docker exec -it CONTAINER_ID LINUX_COMMANDS
 
 [Attach]
@@ -143,6 +145,7 @@ docker image rm REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME
 docker image rm -f REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME
 docker image rm REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
 docker image rm -f REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
+docker image prune
 docker image prune -f
 docker image prune --force
 

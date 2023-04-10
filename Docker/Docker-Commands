@@ -30,6 +30,7 @@ docker run -itd IMAGE_NAME
 docker run -itd IMAGE_NAME:TAG
 docker run -itd --name=CONTAINER_NAME IMAGE_NAME
 docker run -itd --network=NETWORK_TYPES_NAME --name=CONTAINER_NAME IMAGE_NAME
+docker run -itd --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -d -it IMAGE_NAME
 docker run -d -it --name CONTAINER_NAME IMAGE_NAME
 docker run -d -it -v HOST_PATH:/CONTAINER_PATH_FOLDER_NAME IMAGE_NAME
@@ -129,10 +130,13 @@ docker rm $(docker ps -aq)
 docker rm -f -v $(docker ps -q)
 
 [Image]
+docker image build NAME:TAG .
 docker image ls 
+docker image tag IMAGE_NAME:TAG DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG                                                      # rename the existing Image
 docker image inspect IMAGE_ID
 docker image inspect IMAGE_NAME
 docker image inspect IMAGE_NAME:TAG
+docker image push DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker image rm IMAGE_ID
 docker image rm -f IMAGE_ID
 docker image rm IMAGE_NAME
@@ -152,6 +156,8 @@ docker image prune -f
 docker image prune --force
 
 [Container]
+docker container run -itd --name CONTAINER_NAME IMAGE_NAME /bin/bash
+docker container attach CONTAINER_ID
 docker container ls                                                 # list docker containers
 docker container ls -a
 docker container inspect CONTAINER_ID

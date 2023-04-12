@@ -30,6 +30,7 @@ docker run -itd IMAGE_NAME
 docker run -itd IMAGE_NAME:TAG
 docker run -itd --name=CONTAINER_NAME IMAGE_NAME
 docker run -itd --network=NETWORK_TYPES_NAME --name=CONTAINER_NAME IMAGE_NAME
+docker run -itd --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -itd --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -d -it IMAGE_NAME
 docker run -d -it --name CONTAINER_NAME IMAGE_NAME
@@ -162,6 +163,7 @@ docker container ls                                                 # list docke
 docker container ls -a
 docker container inspect CONTAINER_ID
 docker container inspect CONTAINER_NAME
+docker container stop CONTAINER_NAME
 docker container rm CONTAINER_ID
 docker container rm -f CONTAINER_ID
 docker container rm CONTAINER_NAME

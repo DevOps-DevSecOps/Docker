@@ -7,3 +7,6 @@ docker run -d -it -v $(pwd):/FOLDER_NAME/FOLDER_NAME IMAGE_NAME
 [Exec]
 docker exec CONTAINER_NAME ls /FOLDER_NAME/
 docker exec CONTAINER_NAME cat /FOLDER_NAME/FILE_NAME
+docker exec CONTAINER_NAME git clone REMOTE_REPOSITORY_URL(HTTPS/SSH) /FOLDER_NAME
+docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --syntax-check
+docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --connection=local --sudo

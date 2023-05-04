@@ -3,6 +3,9 @@ docker run --name webserver -p 8080:80 nginx
 docker run -itd --network=none --name=CONTAINER_NAME IMAGE_NAME
 docker run -d -it -v $(pwd):/var/www nginx
 docker run -d -it -v $(pwd):/FOLDER_NAME/FOLDER_NAME IMAGE_NAME
+● link
+docker run -d --name db -p 5342:5342 postgres:latest                                                # first, let's run our Postgres container
+docker run -d -p 8080:8080 --name web-app --link db                                                 # then link it to web application
 
 [Exec]
 docker exec CONTAINER_NAME ls /FOLDER_NAME/

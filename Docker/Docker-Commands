@@ -115,6 +115,7 @@ docker ps -a
 
 [List of Images]
 docker images
+docker images IMAGE_NAME
 
 [Remove Images]
 docker rmi IMAGE_ID

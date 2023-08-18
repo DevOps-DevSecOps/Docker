@@ -52,6 +52,7 @@ docker run -d --name CONTAINER_NAME DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -d --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -d --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT --network NETWORK_NAME DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -d --name=CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
+docker run --detach --name CONTAINER_NAME --publish "LOCALHOST_IP_ADDRESS:HOST_PORT:CONTAINER_PORT" IMAGE_NAME:TAG
 
 [Create]                                                                        # create docker container using Image from Docker Hub
 docker create -it IMAGE_NAME
@@ -112,6 +113,7 @@ docker inspect CONTAINER_NAME | grep "IPAddress"
 [List the Containers]
 docker ps
 docker ps -a
+docker ps --filter="name=CONTAINER_NAME"
 
 [List of Images]
 docker images

@@ -225,7 +225,8 @@ docker events
 docker login
 docker login -u DOCKER_HUB_USER_ID
 docker login -u DOCKER_HUB_USER_ID -p DOCKER_HUB_USER_PASSWORD
-docker login -u DOCKER_HUB_USER_ID -p DOCKER_HUB_USER_PASSWORD IP_ADDRESS:PORT_NO
+docker login -u USER_NAME -p PASSWORD IP_ADDRESS:PORT_NO
+docker login -u USER_NAME REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT
 
 [Volumes]
 docker volume create VOLUME_NAME

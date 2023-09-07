@@ -190,6 +190,10 @@ docker container prune                                              # delete all
 docker container prune -f
 docker container prune --force
 
+[Top]
+docker top CONTAINER_ID
+docker top CONTAINER_NAME
+
 [Logs]
 docker logs -f CONTAINER_NAME
 

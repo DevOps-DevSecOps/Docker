@@ -2,4 +2,4 @@ Docker Hub limits the number of Docker image downloads (“pulls”) based on th
 Pull rates limits are based on individual IP address.
 For anonymous users, the rate limit is set to 100 pulls per 6 hours per IP address.
 For authenticated users, it is 200 pulls per 6 hour period.
-There are no limits for users with a paid Docker subscription.
+Users with a paid Docker subscription, it is up to 5000 pulls per day.

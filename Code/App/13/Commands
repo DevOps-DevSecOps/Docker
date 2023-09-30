@@ -1,0 +1,8 @@
+The . specifies that the build context is the current directory.
+$ docker build -t DOCKER_HUB_USER_ID/nodejs-image-demo .
+
+$ docker images
+
+$ docker run --name nodejs-image-demo -p 80:8080 -d DOCKER_HUB_USER_ID/nodejs-image-demo
+
+$ docker ps

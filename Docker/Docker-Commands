@@ -91,6 +91,8 @@ docker cp CONTAINER_NAME:/FILE_NAME FOLDER_NAME/.
 [Pull]
 docker pull IMAGE_NAME
 docker pull IMAGE_NAME:TAG
+docker pull DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker pull DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker pull REGISTRY_HOSTNAME_IPADDRESS:REGISTRY_PORT/IMAGE_NAME:TAG
 
 [Push]
@@ -124,6 +126,7 @@ docker ps --filter="name=CONTAINER_NAME"
 
 [List of Images]
 docker images
+docker images -a
 docker images IMAGE_NAME
 
 [Remove Images]

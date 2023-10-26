@@ -24,6 +24,7 @@ docker run -it --net NETWORK_NAME IMAGE_NAME sh
 docker run -it IMAGE_NAME:TAG
 docker run -it DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -it --rm DOCKER_HUB_USER_ID/REPOSITORY_NAME
+docker run -it --rm -e VARIABLE=VALUE -e VARIABLE=VALUE -p HOST_PORT:CONTAINER_PORT -p HOST_PORT:CONTAINER_PORT IMAGE_NAME:TAG
 docker run -it --rm --name CONTAINER_NAME IMAGE_NAME sh                             # exit from a container will be deleted
 docker run -it --rm --name CONTAINER_NAME IMAGE_NAME:TAG bash
 docker run -it --rm -p HOST_PORT:CONTAINER_PORT --name="CONTAINER_NAME" IMAGE_NAME
@@ -166,6 +167,7 @@ docker image tag IMAGE_NAME:TAG DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG          
 docker image inspect IMAGE_ID
 docker image inspect IMAGE_NAME
 docker image inspect IMAGE_NAME:TAG
+docker image pull IMAGE_NAME:TAG
 docker image push DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker image rm IMAGE_ID
 docker image rm -f IMAGE_ID
@@ -186,6 +188,7 @@ docker image prune -f
 docker image prune --force
 
 [Container]
+docker container create --name CONTAINER_NAME --publish HOST_PORT:CONTAINER_PORT IMAGE_NAME:TAG
 docker container run -itd --name CONTAINER_NAME IMAGE_NAME /bin/bash
 docker container attach CONTAINER_ID
 docker container ls                                                 # list docker containers
@@ -193,6 +196,7 @@ docker container ls -a
 docker container ls -a -q -f name=CONTAINER_NAME
 docker container inspect CONTAINER_ID
 docker container inspect CONTAINER_NAME
+docker container start CONTAINER_NAME
 docker container stop CONTAINER_NAME
 docker container rm CONTAINER_ID
 docker container rm -f CONTAINER_ID

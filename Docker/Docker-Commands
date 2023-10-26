@@ -212,6 +212,7 @@ docker top CONTAINER_ID
 docker top CONTAINER_NAME
 
 [Logs]
+docker logs CONTAINER_ID
 docker logs -f CONTAINER_NAME
 
 [Diff]

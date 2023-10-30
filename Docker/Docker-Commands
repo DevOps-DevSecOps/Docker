@@ -162,7 +162,7 @@ docker rm $(docker ps -aq)
 docker rm -f -v $(docker ps -q)
 
 [Image]
-docker image build NAME:TAG .
+docker image build -t NAME:TAG .
 docker image ls 
 docker image tag IMAGE_NAME:TAG DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG                                                      # rename the existing Image
 docker image inspect IMAGE_ID

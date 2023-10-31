@@ -1,5 +1,6 @@
 [Run]
 docker run --name webserver -p 8080:80 nginx
+docker run -it --name tomcat -p 8080:8080 -v /tmp/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml -v /tmp/context.xml:/tmp/context.xml tomcat:9.0 /bin/bash -c "mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps2; mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps; cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml; catalina.sh run"
 docker run -itd --network=none --name=CONTAINER_NAME IMAGE_NAME
 docker run -d -it -v $(pwd):/var/www nginx
 docker run -d -it -v $(pwd):/FOLDER_NAME/FOLDER_NAME IMAGE_NAME

@@ -1,0 +1,22 @@
+$ docker pull tomcat
+
+[Dockerfile]
+FROM tomcat:latest
+
+$ docker build . --tag tomcat:latest
+
+$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
+tomcat       latest    4ce9babdd885   7 days ago   680MB
+
+$ docker run --detach --publish 8080:8080 --name tomcat --restart unless-stopped tomcat
+
+$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS         PORTS                                       NAMES
+24d6d3fa99a3   tomcat    "catalina.sh run"   5 seconds ago   Up 5 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   tomcat
+
+(some reason Tomcat is not running, you can try to issue the catalina.sh run command)
+$ docker container exec tomcat catalina.sh run
+
+$ docker exec tomcat ls -l /usr/local/tomcat
+

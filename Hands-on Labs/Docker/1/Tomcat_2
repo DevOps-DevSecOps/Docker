@@ -1,0 +1,14 @@
+$ ls
+Dockerfile  ROOT.war
+
+[Dockerfile]
+FROM tomcat
+COPY ROOT.war /usr/local/tomcat/webapps/
+
+$ docker build -t myapp .
+
+$ docker run -itd -p 8080:8080 --name my_application_container myapp
+
+$ docker ps 
+CONTAINER ID    IMAGE    COMMAND              CREATED           STATUS           PORTS                    NAMES
+e90c61fdb4ac    myapp    "catalina.sh run"    6 seconds ago     Up 5 seconds     0.0.0.0:8080->8080/tcp   my_application_container

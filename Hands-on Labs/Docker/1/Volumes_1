@@ -1,0 +1,5 @@
+$ docker volume create tomcat-volume
+
+$ docker run -d -p 8080:8080 --name tomcat -v tomcat-volume:/usr/local/tomcat tomcat:9.0.10-jre8
+
+$ docker volume inspect tomcat-volume

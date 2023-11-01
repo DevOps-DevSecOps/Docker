@@ -20,3 +20,18 @@ $ docker container exec tomcat catalina.sh run
 
 $ docker exec tomcat ls -l /usr/local/tomcat
 
+$ docker cp /tmp/helloworld.war tomcat:/usr/local/tomcat/webapps
+
+(restart the container)
+$ docker restart tomcat
+
+(docker exec command)
+$ docker exec tomcat catalina.sh stop
+$ docker exec tomcat catalina.sh start
+
+$ docker exec tomcat ls -l /usr/local/tomcat/webapps
+drwxr-x--- 4 root root   54 Oct 21 04:46 helloworld
+-rwxr-xr-x 1 root root 1025 Oct 21 04:37 helloworld.war
+
+LINKS :- https://www.freekb.net/Article?id=3435
+         https://www.freekb.net/Article?id=3436

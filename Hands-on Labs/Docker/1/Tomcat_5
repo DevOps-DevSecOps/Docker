@@ -1,0 +1,16 @@
+[Dockerfile]
+FROM tomcat:7-jdk8-openjdk
+LABEL maintainer="admin@itersdesktop.com"
+ADD grailsapp.war /usr/local/tomcat/webapps/
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
+
+$ docker search tomcat
+
+$ docker build -t tnguyenv/grails-based-app .
+
+$ docker image ls -a
+
+$ docker run -it --rm tnguyenv/grails-based-app --name mywebapp --expose 1982:8080
+
+$ docker exec -it mywebapp /bin/bash

@@ -81,6 +81,7 @@ docker exec -it CONTAINER_ID LINUX_COMMANDS
 docker exec -it CONTAINER_NAME sh
 docker exec -it CONTAINER_NAME bash
 docker exec -it CONTAINER_NAME /bin/sh
+docker exec -it CONTAINER_NAME /bin/bash
 
 [Attach]
 docker attach CONTAINER_ID

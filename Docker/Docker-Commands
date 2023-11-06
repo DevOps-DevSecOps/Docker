@@ -15,6 +15,7 @@ docker run -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -e VARIABLE=VALUE -p HOST_PORT:CONTAINER_PORT -p HOST_PORT:CONTAINER_PORT IMAGE_NAME:TAG
 docker run --name CONTAINER_NAME IMAGE_NAME
 docker run --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT IMAGE_NAME
+docker run --name CONTAINER_NAME -p HOST_PORT:CONTAINER_PORT -p HOST_PORT:CONTAINER_PORT -v /CONTAINER_PATH_FOLDER_NAME/FOLDER_NAME IMAGE_NAME:TAG
 docker run -t -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -t -e "VARIABLE=VALUE" -p HOST_PORT:CONTAINER_PORT DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG
 docker run -i -t IMAGE_NAME /bin/bash
@@ -132,9 +133,10 @@ docker inspect IMAGE_ID
 docker inspect IMAGE_NAME
 docker inspect IMAGE_NAME:TAG
 docker inspect CONTAINER_ID
-docker inspect CONTAINER_ID | grep "IPAddress"
+docker inspect CONTAINER_ID | grep NAME
+docker inspect CONTAINER_ID | grep "NAME"
 docker inspect CONTAINER_NAME
-docker inspect CONTAINER_NAME | grep "IPAddress"
+docker inspect CONTAINER_NAME | grep "NAME"
 
 [List the Containers]
 docker ps
@@ -278,6 +280,7 @@ docker volume create VOLUME_NAME
 docker inspect VOLUME_NAME
 docker volume inspect VOLUME_NAME
 docker volume rm VOLUME_NAME
+docker volume ls
 
 [Network]
 docker network create NETWORK_NAME                      # create a docker network

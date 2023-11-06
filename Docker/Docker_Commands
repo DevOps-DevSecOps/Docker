@@ -15,3 +15,9 @@ docker exec CONTAINER_NAME cat /FOLDER_NAME/FILE_NAME
 docker exec CONTAINER_NAME git clone REMOTE_REPOSITORY_URL(HTTPS/SSH) /FOLDER_NAME
 docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --syntax-check
 docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --connection=local --sudo
+
+[Inspect]
+docker inspect CONTAINER_ID | grep volume
+docker inspect CONTAINER_ID | grep IPAdd
+docker inspect CONTAINER_ID | grep "IPAddress"
+docker inspect CONTAINER_NAME | grep "IPAddress"

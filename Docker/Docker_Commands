@@ -22,3 +22,6 @@ docker inspect CONTAINER_ID | grep volume
 docker inspect CONTAINER_ID | grep IPAdd
 docker inspect CONTAINER_ID | grep "IPAddress"
 docker inspect CONTAINER_NAME | grep "IPAddress"
+
+[Compose]
+docker-compose -f docker-compose_tomcat.yml down

@@ -325,6 +325,7 @@ docker-compose up -d
 docker-compose up -d SERVICE_NAME
 docker-compose up -d --no-deps --build SERVICE_NAME                                         # -d=Detached mode:Run containers in the background, --no-deps=Don't start linked services, --build=Build images before starting containers
 docker-compose -f FILE_NAME.yaml up
+docker-compose -f FILE_NAME.yml up -d
 docker-compose -f FILE_NAME.yaml up -d
 docker-compose -f FILE_NAME.yml up -d SERVICE_NAME
 docker-compose ps
@@ -332,6 +333,9 @@ docker-compose exec CONTAINER_ID LINUX_COMMANDS
 docker-compose scale SERVICE_NAME=NO
 docker-compose stop
 docker-compose down
+docker-compose down --volumes
+docker-compose -f FILE_NAME.yml down
+docker-compose -f FILE_NAME.yaml down
 docker-compose rm
 
 [Swarm]

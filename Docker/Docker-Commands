@@ -107,6 +107,9 @@ docker cp CONTAINER_NAME:/FOLDER_NAME/. /FOLDER_NAME
 docker cp CONTAINER_ID:/FILE_NAME FOLDER_NAME/.
 docker cp CONTAINER_NAME:/FILE_NAME FOLDER_NAME/.
 
+[Search]                                                                        search for public images on the DockerHub
+docker search IMAGE_NAME
+
 [Pull]
 docker pull IMAGE_NAME
 docker pull IMAGE_NAME:TAG

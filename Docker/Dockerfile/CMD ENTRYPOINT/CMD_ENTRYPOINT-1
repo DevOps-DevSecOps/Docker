@@ -50,4 +50,4 @@ PING google.com (216.58.220.206) 56(84) bytes of data.
 -> When a user run a container with any arguments (commands) at the end of "docker run" command, the specified commands override the default arguement in CMD instruction, so the container will run the arguement given at the end of the docker run command.
 -> But if the same argument is given along with ENTRYPOINT instruction in dockerfile, even when a user gives any argument at the end of the docker run command, that will not override ENTRYPOINT instruction. So instruction will run as it is.
 
-# Links:- https://www.learnitguide.net/2018/06/dockerfile-cmd-entrypoint-differences.html
+# Links:- https://www.learnitguide.net/2018/06/docker-cmd-entrypoint-differences.html

@@ -17,11 +17,20 @@ docker exec CONTAINER_NAME git clone REMOTE_REPOSITORY_URL(HTTPS/SSH) /FOLDER_NA
 docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --syntax-check
 docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --connection=local --sudo
 
+[Push]
+docker push IP_ADDRESS:PORT_NO/IMAGE_NAME:TAG
+
 [Inspect]
 docker inspect CONTAINER_ID | grep volume
 docker inspect CONTAINER_ID | grep IPAdd
 docker inspect CONTAINER_ID | grep "IPAddress"
 docker inspect CONTAINER_NAME | grep "IPAddress"
+
+[Remove Images]
+docker rmi IP_ADDRESS:PORT_NO/IMAGE_NAME:TAG
+
+[Dockerfile_Build]
+docker build -t IP_ADDRESS:PORT_NO/IMAGE_NAME:TAG .
 
 [Compose]
 docker-compose -f docker-compose_tomcat.yml down

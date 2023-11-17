@@ -1,0 +1,3 @@
+from ubuntu
+run echo I am using the default
+workdir /data/myscript

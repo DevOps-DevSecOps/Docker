@@ -22,11 +22,13 @@ docker run -i -t IMAGE_NAME /bin/bash
 docker run -it IMAGE_ID
 docker run -it IMAGE_NAME
 docker run -it IMAGE_NAME sh
-docker run -it --net NETWORK_NAME IMAGE_NAME sh 
 docker run -it IMAGE_NAME:TAG
+docker run -it --net NETWORK_NAME IMAGE_NAME sh 
+docker run -it -p HOST_PORT:CONTAINER_PORT IMAGE_NAME
 docker run -it DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -it --rm DOCKER_HUB_USER_ID/REPOSITORY_NAME
 docker run -it --rm -e VARIABLE=VALUE -e VARIABLE=VALUE -p HOST_PORT:CONTAINER_PORT -p HOST_PORT:CONTAINER_PORT IMAGE_NAME:TAG
+docker run -it --rm -p HOST_PORT:CONTAINER_PORT -v /HOST_PATH_FOLDER_NAME/FILE_NAME:/CONTAINER_PATH_FOLDER_NAME/FILE_NAME IMAGE_NAME
 docker run -it --rm --name CONTAINER_NAME IMAGE_NAME sh                             # exit from a container will be deleted
 docker run -it --rm --name CONTAINER_NAME IMAGE_NAME:TAG bash
 docker run -it --rm -p HOST_PORT:CONTAINER_PORT --name="CONTAINER_NAME" IMAGE_NAME

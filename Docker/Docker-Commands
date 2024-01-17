@@ -1,6 +1,7 @@
 [Version]
-docker -v
 docker version
+docker -v
+docker --version
 
 [Information]
 docker info

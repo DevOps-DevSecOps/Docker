@@ -320,6 +320,8 @@ docker build -t NAME .
 docker build -t NAME:TAG .
 docker build -t NAME -f Dockerfile_NAME .
 docker build -t NAME:TAG -f Dockerfile_NAME .
+docker build -t NAME -f FOLDER_NAME/Dockerfile_NAME .
+docker build -t NAME:TAG -f FOLDER_NAME/Dockerfile_NAME .
 docker build -t DOCKER_HUB_USER_ID/REPOSITORY_NAME .
 docker build -t DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG .
 docker build -t DOCKER_HUB_USER_ID/REPOSITORY_NAME:TAG -f Dockerfile_NAME .

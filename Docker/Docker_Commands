@@ -18,6 +18,9 @@ docker exec CONTAINER_NAME git clone REMOTE_REPOSITORY_URL(HTTPS/SSH) /FOLDER_NA
 docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --syntax-check
 docker exec CONTAINER_NAME ansible-playbook -i /FOLDER_NAME/FOLDER_NAME /FOLDER_NAME/FILE_NAME.yml --connection=local --sudo
 
+[Pull]
+docker pull nginx
+
 [Push]
 docker push IP_ADDRESS:PORT_NO/IMAGE_NAME:TAG
 

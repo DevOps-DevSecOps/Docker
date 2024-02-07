@@ -25,6 +25,7 @@ docker pull nginx:latest
 
 [Push]
 docker push IP_ADDRESS:PORT_NO/IMAGE_NAME:TAG
+docker push IP_ADDRESS:PORT_NO/IMAGE_NAME:$BUILD_NUMBER
 
 [Inspect]
 docker inspect CONTAINER_ID | grep volume
@@ -34,9 +35,12 @@ docker inspect CONTAINER_NAME | grep "IPAddress"
 
 [Remove Images]
 docker rmi IP_ADDRESS:PORT_NO/IMAGE_NAME:TAG
+docker rmi IP_ADDRESS:PORT_NO/IMAGE_NAME:$BUILD_NUMBER
+docker rmi -f IP_ADDRESS:PORT_NO/IMAGE_NAME:$BUILD_NUMBER
 
 [Dockerfile_Build]
 docker build -t IP_ADDRESS:PORT_NO/IMAGE_NAME:TAG .
+docker build -t IP_ADDRESS:PORT_NO/IMAGE_NAME:$BUILD_NUMBER .
 
 [Compose]
 docker-compose -f docker-compose_tomcat.yml down

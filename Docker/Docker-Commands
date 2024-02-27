@@ -299,6 +299,11 @@ docker inspect VOLUME_NAME
 docker volume inspect VOLUME_NAME
 docker volume rm VOLUME_NAME
 docker volume ls
+docker volume prune
+docker volume prune -a
+docker volume prune --all
+docker volume prune -f
+docker volume prune --force
 
 [Network]
 docker network create NETWORK_NAME                      # create a docker network
